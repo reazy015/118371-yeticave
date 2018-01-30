@@ -1,7 +1,7 @@
 # Личный проект «YetiCave»
 
 * Студент: [Владимир Хребтов](https://up.htmlacademy.ru/php/4/user/118371).
-* Наставник: `Неизвестно`.
+* Наставник: [Денис Лапаев](https://htmlacademy.ru/profile/id587589).
 
 ---
 
