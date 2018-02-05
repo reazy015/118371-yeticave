@@ -70,14 +70,14 @@ $lots_list = [
 
         <!-- здесь должен быть PHP код для показа аватара пользователя -->
 
-        <? if($is_auth): ?>
+        <?php if ($is_auth): ?>
           <div class="user-menu__image">
-            <img src="<?=$user_avatar?>" width="40" height="40" alt="Пользователь">
+            <img src="<?=$user_avatar;?>" width="40" height="40" alt="Пользователь">
           </div>
           <div class="user-menu__logged">
-            <p><?=$user_name?></p>
+            <p><?=$user_name;?></p>
           </div>
-        <? else: ?>
+        <?php else: ?>
           <ul class="user-menu__list">
             <li class="user-menu__item">
               <a href="#">Регистрация</a>
@@ -86,7 +86,7 @@ $lots_list = [
               <a href="#">Вход</a>
             </li>
           </ul>
-        <? endif; ?>
+        <?php endif; ?>
 
         </nav>
     </div>
@@ -122,17 +122,17 @@ $lots_list = [
             <h2>Открытые лоты</h2>
         </div>
         <ul class="lots__list">
-            <? foreach ($lots_list as $current_lot => $lot): ?>
+            <?php foreach ($lots_list as $current_lot => $lot): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$lot['img_url']?>" width="350" height="260" alt="<?=$lot['name']?>">
+                    <img src="<?=$lot['img_url'];?>" width="350" height="260" alt="<?=$lot['name'];?>">
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?=$lot['category']?></span>
-                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$lot['name']?></a></h3>
+                    <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$lot['name'];?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?=$lot['price']?></span>
+                            <span class="lot__amount"><?=$lot['price'];?></span>
                             <span class="lot__cost">10 999<b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
@@ -141,7 +141,7 @@ $lots_list = [
                     </div>
                 </div>
             </li>
-          <? endforeach; ?>
+          <?php endforeach; ?>
         </ul>
     </section>
 </main>
@@ -149,11 +149,11 @@ $lots_list = [
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <? for ($i = 0; $i < count($categories); $i++): ?>
+            <?php for ($i = 0; $i < count($categories); $i++): ?>
               <li class="nav__item">
-                  <a href="all-lots.html"><?=$categories[$i]?></a>
+                  <a href="all-lots.html"><?=$categories[$i];?></a>
               </li>
-            <? endfor; ?>
+            <?php endfor; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
