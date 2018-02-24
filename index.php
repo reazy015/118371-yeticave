@@ -1,6 +1,7 @@
 <?php
 $is_auth = (bool) rand(0, 1);
 
+
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
@@ -75,8 +76,6 @@ function format_price($price) {
         <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
-
-        <!-- здесь должен быть PHP код для показа аватара пользователя -->
 
         <?php if ($is_auth): ?>
           <div class="user-menu__image">
