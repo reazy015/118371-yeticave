@@ -1,7 +1,6 @@
 <?php
 $is_auth = (bool) rand(0, 1);
 
-
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
@@ -44,14 +43,6 @@ $lots_list = [
     'img_url' => 'img/lot-6.jpg'
   ]
 ];
-
-function format_price($price) {
-    if ($price < 1000) {
-        return ceil($price) . ' ';
-    } else {
-        return number_format($price, 0, '.', ' ') . ' ';
-    }
-};
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -84,7 +75,7 @@ function format_price($price) {
           <div class="user-menu__logged">
             <p><?=$user_name;?></p>
           </div>
-        <?php  else: ?>
+        <?php else: ?>
           <ul class="user-menu__list">
             <li class="user-menu__item">
               <a href="#">Регистрация</a>
@@ -132,15 +123,15 @@ function format_price($price) {
             <?php foreach ($lots_list as $current_lot => $lot): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$lot['img_url'];?>" width="350" height="260" alt="<?=$lot['name']?>">
+                    <img src="<?=$lot['img_url'];?>" width="350" height="260" alt="<?=$lot['name'];?>">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?=$lot['category'];?></span>
+                    <span class="lot__category"><?=$lot['category']?></span>
                     <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$lot['name'];?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=format_price($lot['price']);?><b class="rub"></b></span>
+                            <span class="lot__cost"><?=$lot['price'];?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
 
@@ -148,7 +139,7 @@ function format_price($price) {
                     </div>
                 </div>
             </li>
-          <?php  endforeach; ?>
+          <?php endforeach; ?>
         </ul>
     </section>
 </main>
@@ -156,11 +147,11 @@ function format_price($price) {
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <?php for ($i = 0; $i < count($categories); $i++): ?>
+            <?php foreach ($categories as $key => $category) :?>
               <li class="nav__item">
-                  <a href="all-lots.html"><?=$categories[$i];?></a>
+                  <a href="all-lots.html"><?=$category?></a>
               </li>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
