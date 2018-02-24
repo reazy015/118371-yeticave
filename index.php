@@ -68,6 +68,8 @@ $lots_list = [
 
         <nav class="user-menu">
 
+          <!-- здесь должен быть PHP код для показа аватара пользователя -->
+          
         <?php if ($is_auth): ?>
           <div class="user-menu__image">
             <img src="<?=$user_avatar;?>" width="40" height="40" alt="Пользователь">
@@ -147,9 +149,9 @@ $lots_list = [
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <?php foreach ($categories as $key => $category) :?>
+            <?php foreach ($categories as $key => $value) :?>
               <li class="nav__item">
-                  <a href="all-lots.html"><?=$category?></a>
+                  <a href="all-lots.html"><?=$value;?></a>
               </li>
             <?php endforeach; ?>
         </ul>
