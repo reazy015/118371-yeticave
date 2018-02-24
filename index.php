@@ -43,6 +43,16 @@ $lots_list = [
     'img_url' => 'img/lot-6.jpg'
   ]
 ];
+
+function format_price($price) {
+    $price = ceil($price);
+    if ($price < 1000) {
+        return $price . ' ';
+    } else {
+        return number_format($price, 0, '.', ' ') . ' ';
+    }
+};
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -69,7 +79,7 @@ $lots_list = [
         <nav class="user-menu">
 
           <!-- здесь должен быть PHP код для показа аватара пользователя -->
-          
+
         <?php if ($is_auth): ?>
           <div class="user-menu__image">
             <img src="<?=$user_avatar;?>" width="40" height="40" alt="Пользователь">
@@ -133,7 +143,7 @@ $lots_list = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=$lot['price'];?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?=format_price($lot['price']);?><b class="rub">₽</b></span>
                         </div>
                         <div class="lot__timer timer">
 
