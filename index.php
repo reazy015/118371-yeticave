@@ -42,7 +42,7 @@ $lots_list = [
     'price' => 5400,
     'img_url' => 'img/lot-6.jpg'
   ]
-]
+];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -67,8 +67,6 @@ $lots_list = [
         <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
 
         <nav class="user-menu">
-
-        <!-- здесь должен быть PHP код для показа аватара пользователя -->
 
         <?php if ($is_auth): ?>
           <div class="user-menu__image">
@@ -132,8 +130,8 @@ $lots_list = [
                     <h3 class="lot__title"><a class="text-link" href="lot.html"><?=$lot['name'];?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
-                            <span class="lot__amount"><?=$lot['price'];?></span>
-                            <span class="lot__cost">10 999<b class="rub">р</b></span>
+                            <span class="lot__amount">Стартовая цена</span>
+                            <span class="lot__cost"><?=$lot['price'];?><b class="rub">р</b></span>
                         </div>
                         <div class="lot__timer timer">
 
@@ -149,11 +147,11 @@ $lots_list = [
 <footer class="main-footer">
     <nav class="nav">
         <ul class="nav__list container">
-            <?php for ($i = 0; $i < count($categories); $i++): ?>
+            <?php foreach ($categories as $key => $value) :?>
               <li class="nav__item">
-                  <a href="all-lots.html"><?=$categories[$i];?></a>
+                  <a href="all-lots.html"><?=$value;?></a>
               </li>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </ul>
     </nav>
     <div class="main-footer__bottom container">
