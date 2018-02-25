@@ -44,10 +44,11 @@ $lots_list = [
 ];
 
 function format_price($price) {
+    $price = ceil($price);
     if ($price < 1000) {
-        return ceil($price) . ' ';
+        return $price;
     } else {
-        return number_format($price, 0, '.', ' ') . ' ';
+        return number_format($price, 0, '.', ' ');
     }
 };
 
@@ -58,7 +59,7 @@ function render_template($path, $data) {
         require_once $path;
         return ob_get_clean();
     } else {
-        return'';
+        return '';
    }
 }
  ?>
