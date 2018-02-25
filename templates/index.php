@@ -39,10 +39,10 @@
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=format_price($lot['price']);?>&nbsp;<b class="rub">р</b></span>
+                            <span class="lot__cost"><?=format_price($lot['price']);?>&nbsp;<b class="rub">₽</b></span>
                         </div>
                         <div class="lot__timer timer">
-
+                            <?=$hour?> : <?=$second?>
                         </div>
                     </div>
                 </div>
