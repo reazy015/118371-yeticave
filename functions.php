@@ -62,4 +62,20 @@ function render_template($path, $data) {
         return '';
    }
 }
+
+function get_time_to_remain() {
+    date_default_timezone_set('Europe/Moscow');
+  	$now = time();
+  	$midnight = strtotime('tomorrow');
+  	$time_left = $midnight - $now;
+  	$secs_in_hour = 3600;
+  	$secs_in_minute = 60;
+  	$hours = floor($time_left / $secs_in_hour);
+  	$minutes = floor($time_left / $secs_in_minute) % $secs_in_minute;
+  	return [
+      'hours' => $hours,
+      'minutes' => $minutes
+    ];
+
+}
  ?>

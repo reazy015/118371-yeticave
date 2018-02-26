@@ -42,7 +42,7 @@
                             <span class="lot__cost"><?=format_price($lot['price']);?>&nbsp;<b class="rub">₽</b></span>
                         </div>
                         <div class="lot__timer timer">
-                            <?=$hour?> : <?=$second?>
+                            <?=$hours?> : <?=$minutes?>
                         </div>
                     </div>
                 </div>
