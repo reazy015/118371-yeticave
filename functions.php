@@ -4,6 +4,7 @@ $title = 'Главная';
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 $categories = ['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];
+
 $lots_list = [
   [
     'name' => '2014 Rossignol District Snowboard',
@@ -43,6 +44,10 @@ $lots_list = [
   ]
 ];
 
+
+
+
+
 function format_price($price) {
     $price = ceil($price);
     if ($price < 1000) {
@@ -61,5 +66,24 @@ function render_template($path, $data) {
     } else {
         return '';
    }
+}
+
+function get_time_to_remain() {
+    date_default_timezone_set('Europe/Moscow');
+  	$now = time();
+  	$midnight = strtotime('tomorrow');
+  	$time_left = $midnight - $now;
+  	$hours = floor($time_left / 3600);
+  	$minutes = floor(($time_left % 3600) / 60);
+
+    if ($hours < 10) {
+        $hours = '0' . $hours;
+    }
+    if ($minutes < 10) {
+        $minutes = '0' . $minutes;
+    }
+
+  	return $hours . ':' . $minutes;
+
 }
  ?>
