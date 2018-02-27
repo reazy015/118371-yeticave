@@ -5,8 +5,7 @@ $is_auth = (bool) rand(0, 1);
 
 $page_content = render_template('templates/index.php', [
   'lots_list' => $lots_list,
-  'hours' => get_time_to_remain()['hours'],
-  'minutes' => get_time_to_remain()['minutes']
+  'time' => get_time_to_remain()
 ]);
 
 $layout_content = render_template('templates/layout.php', [

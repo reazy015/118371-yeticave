@@ -68,14 +68,9 @@ function get_time_to_remain() {
   	$now = time();
   	$midnight = strtotime('tomorrow');
   	$time_left = $midnight - $now;
-  	$secs_in_hour = 3600;
-  	$secs_in_minute = 60;
-  	$hours = floor($time_left / $secs_in_hour);
-  	$minutes = floor($time_left / $secs_in_minute) % $secs_in_minute;
-  	return [
-      'hours' => $hours,
-      'minutes' => $minutes
-    ];
+  	$hours = floor($time_left / 3600);
+  	$minutes = floor($time_left - $hours * 3600) % 60;
+  	return $hours . ' ' . ':' . ' ' . $minutes;
 
 }
  ?>
