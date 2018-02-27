@@ -69,8 +69,15 @@ function get_time_to_remain() {
   	$midnight = strtotime('tomorrow');
   	$time_left = $midnight - $now;
   	$hours = floor($time_left / 3600);
-  	$minutes = floor($time_left - $hours * 3600) % 60;
-  	return $hours . ' ' . ':' . ' ' . $minutes;
+  	$minutes = floor($time_left % 3600) / 60;
+    
+    if ($hours < 10) {
+        $hours = '0' . $hours;
+    } else if ($minutes < 10) {
+        $minutes = '0' . $minutes;
+    }
+    
+  	return $hours . ':' . $minutes;
 
 }
  ?>
