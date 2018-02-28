@@ -1,5 +1,6 @@
 <?php
 
+$is_auth = (bool) rand(0, 1);
 $title = 'Главная';
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
