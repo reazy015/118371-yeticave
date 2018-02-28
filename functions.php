@@ -1,5 +1,10 @@
 <?php
 
+$title = 'Главная';
+$user_name = 'Константин';
+$user_avatar = 'img/user.jpg';
+$categories = ['Доски и лыжи','Крепления','Ботинки','Одежда','Инструменты','Разное'];
+
 function format_price($price) {
     $price = ceil($price);
     if ($price < 1000) {
