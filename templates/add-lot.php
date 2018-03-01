@@ -8,7 +8,7 @@
     </ul>
 </nav>
 
-<form class="form form--add-lot container " action="add.php" method="post"> <!-- form--invalid -->
+<form class="form form--add-lot container " action="add.php" method="post" enctype="multipart/form-data"> <!-- form--invalid -->
     <h2>Добавление лота</h2>
     <?=$name; ?>
     <div class="form__container-two">
