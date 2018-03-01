@@ -49,7 +49,6 @@
             <label for="photo2">
                 <span>+ Добавить</span>
             </label>
-            <input type="file" name="test">
         </div>
     </div>
     <div class="form__container-three">
