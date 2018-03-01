@@ -25,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     if (isset($_FILES['lot-img']['name'])){
-        $path = 'img/' . $_FILES['lot-img']['name'];
-        $res = move_uploaded_file($_FILES['lot-img']['tmp-name'], 'uploads/' . $path);
+        $path = 'img/uploads/' . $_FILES['lot-img']['name'];
+        $res = move_uploaded_file($_FILES['lot-img']['tmp-name'],  $path);
         echo($res);
     } else {
-        $errors[$key] = 'Необходимо заггрузить файл';
+        $errors['lot-img'] = 'Необходимо заггрузить файл';
     }
 
     if (isset($path)) {
@@ -37,7 +37,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
+
+
     if (count($errors)) {
+        echo('errors');
         $page_content = render_template('templates/add-lot.php', [
             'lot' => $lot,
             'errors' => $errors,
@@ -45,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]);
 
     } else {
+        echo('<pre>');
+        var_dump($lot);
+        echo('</pre>');
         $page_content = render_template('templates/lot.php', [
             'lot' => $lot,
             'categories' => $categories

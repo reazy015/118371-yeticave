@@ -10,7 +10,6 @@
 
 <form class="form form--add-lot container " action="add.php" method="post" enctype="multipart/form-data"> <!-- form--invalid -->
     <h2>Добавление лота</h2>
-    <?=$name; ?>
     <div class="form__container-two">
         <div class="form__item "> <!-- form__item--invalid -->
             <label for="lot-name">Наименование</label>
@@ -45,7 +44,7 @@
             </div>
         </div>
         <div class="form__input-file">
-            <input class="visually-hidden" type="file" id="photo2" value="" name="lot-img">
+            <input class="visually-hidden" type="file" id="photo2" value="" name="lot-img" required>
             <label for="photo2">
                 <span>+ Добавить</span>
             </label>
