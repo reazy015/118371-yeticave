@@ -25,8 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //        }
 //    }
 
-    foreach ($lot as $key => $value) {
-        echo('<h1>' . $value . '</h1>');
+    if (isset($_FILES['lot-img']['name'])) {
+       print_r($_FILES);
+    } else {
+        echo('ERROR!');
+    }
+
+    if (isset($_POST['lot-img'])) {
+        print($_POST['lot-img']);
+    } else {
+        echo('ERROR!');
     }
 
 
