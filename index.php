@@ -1,8 +1,8 @@
 <?php
 require_once('functions.php');
+require_once('lots-data.php');
 require_once('data.php');
 
-$is_auth = (bool) rand(0, 1);
 
 $page_content = render_template('templates/index.php', [
   'lots_list' => $lots_list,
