@@ -10,7 +10,7 @@ if (isset($_GET['lot_id'])) {
 
     foreach ($lots_list as $key => $value) {
         if ($key == $lot_id) {
-            $lot_item = $value;
+            $lot_item = $lots_list[$lot_id];
 
             $page_content = render_template('templates/lot.php', [
                 'categories' => $categories,
@@ -41,7 +41,7 @@ if (!$lot_item) {
         'is_auth' => $is_auth,
         'user_avatar' => $user_avatar,
         'user_name' => $user_name,
-        'title' => $lot_item['name'],
+        'title' => 'Ошибка 404. Страница не найдена',
         'categories' => $categories
     ]);
 
