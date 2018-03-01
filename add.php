@@ -19,16 +19,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ];
 
     foreach ($required as $key) {
-        if (empty($_POST[$key])) {
+        if (!isset($_POST[$key])) {
             $errors[$key] = 'Поле не заполнено';
         }
     }
 
+    foreach ($_POST as $key => $value) {
+        echo($key . ' ');
+        echo($value . ' ');
+    }
+
     echo('<pre>');
 
+    var_dump($_POST['lot-img']);
+    var_dump($_POST['lot-name']);
     var_dump($_POST);
-    var_dump($lot);
-    var_dump($errors);
+
     echo('</pre>');
 
 
