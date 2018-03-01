@@ -9,8 +9,7 @@ if (isset($_GET['lot_id']) && isset($lots_list[$_GET['lot_id']])) {
 
     $page_content = render_template('templates/lot.php', [
         'categories' => $categories,
-        'lot' => $lots_list[$lot_id],
-        'bets' => $bets
+        'lot' => $lots_list[$lot_id]
     ]);
 
     $page_layout = render_template('templates/layout.php', [
