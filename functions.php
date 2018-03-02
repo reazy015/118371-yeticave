@@ -44,4 +44,5 @@ function get_time_to_remain() {
   	return $hours . ':' . $minutes;
 
 }
+
  ?>

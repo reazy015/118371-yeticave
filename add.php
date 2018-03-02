@@ -8,15 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $error = [];
     $required = ['name', 'category', 'message', 'price', 'lot-step', 'lot-date'];
-    $dictionary = [
-        'name' => 'Наименование',
-        'message' => 'Описание',
-        'price' => 'Начальная цена',
-        'lot-step' => 'Шаг ставки',
-        'category' => 'Категория',
-        'lot-date'=> 'Дата окончания торгов',
-        'img_url' => 'Фото лота'
-    ];
 
     foreach ($required as $key) {
         if (empty($_POST[$key]) || strlen(trim($_POST[$key])) == 0  ) {
@@ -24,45 +15,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    foreach ($lot as $field => $value) {
-        if ($field == "price"){
 
-            if (!is_numeric($value)) {
-                $errors[$field] = 'Введите число';
-            }
-            if ($value <= 0) {
-                $errors[$field] = 'Число не должно быть равно нулю или быть отрицательным';
-            }
-        }
-        if ($field == "lot-step") {
+    if (!is_numeric($_POST['price'])) {
+        $errors['price'] = 'Введите число';
+    }
+    if ($_POST['price'] <= 0) {
+        $errors['price'] = 'Число не должно быть равно нулю или быть отрицательным';
+    }
 
-            if (!is_numeric($value) ) {
-                $errors[$field] =  'Введите число';
-            }
-            if ($value < 1) {
-                $errors[$field] = 'Шаг не может быть меньше единицы';
-            }
-        }
-        if($field == "category"){
-            if ($value == 'Выберите категорию') {
-                $errors[$field] = 'Вы не выбрали категорию';
-            }
-        }
-        if ($field == "lot-date"){
-            if (strtotime($value) < time()) {
-                $errors[$field] = 'Дата должна быть не позднее завтрашнего дня';
-            }
-        }
+    if (!is_numeric($_POST['lot-step']) ) {
+        $errors['lot-step'] =  'Введите число';
+    }
+    if ($_POST['lot-step'] < 1) {
+        $errors['lot-step'] = 'Шаг не может быть меньше единицы';
+    }
+
+    if ($_POST['category'] == 'Выберите категорию') {
+        $errors['category'] = 'Вы не выбрали категорию';
+    }
+
+    if (strtotime($_POST['lot-date']) < time()) {
+        $errors['lot-date'] = 'Дата должна быть не позднее завтрашнего дня';
     }
 
 
-    if (isset($_FILES['img_url']['name'])){
+    if (isset($_FILES['img_url']) && isset($_FILES['img_url']['name'])){
         $name = $_FILES['img_url']['name'];
         $temp_name = $_FILES['img_url']['tmp_name'];
         $path = 'img/' . $name;
         move_uploaded_file($temp_name,  $path);
     } else {
-        $errors['img_url'] = 'Необходимо заггрузить файл';
+        $errors['img_url'] = 'Необходимо загрузить файл';
     }
 
     if (isset($path)) {
