@@ -16,14 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    if (!is_numeric($_POST['price'])) {
+    if (filter_var($_POST['price'], FILTER_VALIDATE_INT)) {
         $errors['price'] = 'Введите число';
     }
     if ($_POST['price'] <= 0) {
         $errors['price'] = 'Число не должно быть равно нулю или быть отрицательным';
     }
 
-    if (!is_numeric($_POST['lot-step']) ) {
+    if (filter_var($_POST['lot-step'], FILTER_VALIDATE_INT) ) {
         $errors['lot-step'] =  'Введите число';
     }
     if ($_POST['lot-step'] < 1) {
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (strtotime($_POST['lot-date']) < time()) {
-        $errors['lot-date'] = 'Дата должна быть не позднее завтрашнего дня';
+        $errors['lot-date'] = 'Дата должна быть не ранее завтрашнего дня';
     }
 
 
