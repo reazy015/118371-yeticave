@@ -17,7 +17,7 @@ if (isset($_GET['lot_id']) && isset($lots_list[$_GET['lot_id']])) {
         'is_auth' => $is_auth,
         'user_avatar' => $user_avatar,
         'user_name' => $user_name,
-        'title' => $lot_item['name'],
+        'title' => $lots_list[$lot_id]['name'],
         'categories' => $categories
     ]);
 

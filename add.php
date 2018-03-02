@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (strtotime($_POST['lot-date']) < time()) {
-        $errors['lot-date'] = 'Дата должна быть не ранее завтрашнего дня';
+        $errors['lot-date'] = 'Дата должна быть из будущего';
     }
 
 
