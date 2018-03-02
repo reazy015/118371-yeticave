@@ -16,14 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    if (filter_var($_POST['price'], FILTER_VALIDATE_INT)) {
+    if (!filter_var($_POST['price'], FILTER_VALIDATE_INT)) {
         $errors['price'] = 'Введите число';
     }
     if ($_POST['price'] <= 0) {
         $errors['price'] = 'Число не должно быть равно нулю или быть отрицательным';
     }
 
-    if (filter_var($_POST['lot-step'], FILTER_VALIDATE_INT) ) {
+    if (!filter_var($_POST['lot-step'], FILTER_VALIDATE_INT) ) {
         $errors['lot-step'] =  'Введите число';
     }
     if ($_POST['lot-step'] < 1) {
