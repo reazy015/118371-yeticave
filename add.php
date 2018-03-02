@@ -7,40 +7,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lot = $_POST;
 
     $error = [];
-    $required = ['lot-name', 'category', 'message', 'lot-rate', 'lot-step', 'lot-date'];
+    $required = ['name', 'category', 'message', 'price', 'lot-step', 'lot-date'];
     $dictionary = [
-        'lot-name' => 'Наименование',
+        'name' => 'Наименование',
         'message' => 'Описание',
-        'lot-rate' => 'Начальная цена',
+        'price' => 'Начальная цена',
         'lot-step' => 'Шаг ставки',
         'category' => 'Категория',
-        'lot-date'=> 'Дата окончания торгов'
+        'lot-date'=> 'Дата окончания торгов',
+        'img_url' => 'Фото лота'
     ];
 
     foreach ($required as $key) {
-        if (!isset($_POST[$key])) {
+        if (empty($_POST[$key]) || strlen(trim($_POST[$key])) == 0  ) {
             $errors[$key] = 'Поле не заполнено';
         }
     }
 
+    foreach ($lot as $field => $value) {
+        if ($field == "price"){
 
-    if (isset($_FILES['lot-img']['name'])){
-        $path = 'img/uploads/' . $_FILES['lot-img']['name'];
-        $res = move_uploaded_file($_FILES['lot-img']['tmp-name'],  $path);
-        echo($res);
+            if (!is_numeric($value)) {
+                $errors[$field] = 'Введите число';
+            }
+            if ($value <= 0) {
+                $errors[$field] = 'Число не должно быть равно нулю или быть отрицательным';
+            }
+        }
+        if ($field == "lot-step") {
+
+            if (!is_numeric($value) ) {
+                $errors[$field] =  'Введите число';
+            }
+            if ($value < 1) {
+                $errors[$field] = 'Шаг не может быть меньше единицы';
+            }
+        }
+        if($field == "category"){
+            if ($value == 'Выберите категорию') {
+                $errors[$field] = 'Вы не выбрали категорию';
+            }
+        }
+        if ($field == "lot-date"){
+            if (strtotime($value) < time()) {
+                $errors[$field] = 'Дата должна быть не позднее завтрашнего дня';
+            }
+        }
+    }
+
+
+    if (isset($_FILES['img_url']['name'])){
+        $name = $_FILES['img_url']['name'];
+        $temp_name = $_FILES['img_url']['tmp_name'];
+        $path = 'img/' . $name;
+        move_uploaded_file($temp_name,  $path);
     } else {
-        $errors['lot-img'] = 'Необходимо заггрузить файл';
+        $errors['img_url'] = 'Необходимо заггрузить файл';
     }
 
     if (isset($path)) {
-        $lot['lot-img'] = $path;
+        $lot['img_url'] = $path;
     }
 
-
-
-
     if (count($errors)) {
-        echo('errors');
         $page_content = render_template('templates/add-lot.php', [
             'lot' => $lot,
             'errors' => $errors,
@@ -48,9 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ]);
 
     } else {
-        echo('<pre>');
-        var_dump($lot);
-        echo('</pre>');
         $page_content = render_template('templates/lot.php', [
             'lot' => $lot,
             'categories' => $categories
